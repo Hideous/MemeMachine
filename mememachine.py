@@ -23,17 +23,12 @@ def on_message(message):
 	if ( not m.startswith("!")): #Not a command
 		return
 	
-	options = {'hello' : commands.hello,
-           'quit' : commands.quit,
-		   'flickr' : commands.flickr
-	}
-	
 	command = m.split()[0].strip('!')
 	arguments = m.split()[1:]
 	msg = m[len(command)+2:]
 	
 	print(command + " command received from USER:" + message.author.name)
-	#options[command](arguments, msg, client, message.author, message.channel)
+
 	method = getattr(commands, command, commands.default)
 	yield from method(arguments, msg, client, message.author, message.channel)
 	
