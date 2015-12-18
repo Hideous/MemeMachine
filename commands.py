@@ -90,7 +90,7 @@ def soundboard(arguments, message, client, author, channel):
 	userchannel = None
 	
 	if (not discord.opus.is_loaded()):
-		discord.opus.load_opus("C:\\Users\\Andreas\\Documents\\MemeMachine\\libopus-0.dll")
+		discord.opus.load_opus(config.LIBOPUS)
 	
 	files_list = os.listdir(config.SOUNDS)
 	files_list = map(lambda each:each.rstrip(".mp3"), files_list)
